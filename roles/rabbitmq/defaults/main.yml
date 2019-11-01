@@ -1,0 +1,37 @@
+---
+RABBITMQ_ERLANG_COOKIE: "WKRBTTEQRYPTQOPUKSVF"
+
+RABBITMQ_USERS:
+  - name: "admin"
+    password: "iloveadmin"
+  - name: "dev"
+    password: "ilovedev"
+
+RABBITMQ_VHOSTS:
+  - '/'
+
+RABBITMQ_CLUSTERED_HOSTS:
+  - "rabbit@ip-172-31-1-162.ap-northeast-1.compute.internal"
+  - "rabbit@ip-172-31-10-244.ap-northeast-1.compute.internal"
+  - "rabbit@ip-172-31-13-204.ap-northeast-1.compute.internal"
+
+rabbitmq_cluster_master: "ip-172-31-1-162"
+
+RABBITMQ_PORT: 5672
+RABBITMQ_MANAGEMENT_PORT: 15672
+
+rabbitmq_user: "rabbitmq"
+rabbitmq_group: "rabbitmq"
+
+rabbitmq_ubuntu_packages:
+  - rabbitmq-server
+
+rabbitmq_config_dir: "/etc/rabbitmq"
+rabbitmq_var_dir: "/var/lib/rabbitmq"
+rabbitmq_cookie_location: "{{ rabbitmq_var_dir }}/.erlang.cookie"
+rabbitmq_mnesia_folder: "{{ rabbitmq_var_dir }}/mnesia"
+
+rabbitmq_ip: "{{ ansible_default_ipv4.address }}"
+
+rabbitmq_plugins:
+  - rabbitmq_management

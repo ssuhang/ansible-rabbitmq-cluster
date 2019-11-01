@@ -1,0 +1,18 @@
+
+example:
+ansible-playbook -i inventory.ini -u ubuntu --private-key=tony.pem rabbitmq.yml
+
+
+inventory.ini 
+[mq-cluster]
+172.31.11.168
+172.31.1.220
+172.31.9.250
+
+roles/rabbitmq/defaults/main.yml
+RABBITMQ_CLUSTERED_HOSTS:
+  - "rabbit@ip-172-31-11-168"
+  - "rabbit@ip-172-31-1-220"
+  - "rabbit@ip-172-31-9-250"
+
+rabbitmq_cluster_master: "ip-172-31-11-168"
